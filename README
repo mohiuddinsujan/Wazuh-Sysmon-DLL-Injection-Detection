@@ -1,0 +1,73 @@
+# DLL Injection Detection Lab using Wazuh and Sysmon (MITRE ATT&CK T1055.001)
+
+## Overview
+
+This project demonstrates the detection of Dynamic-Link Library (DLL) Injection using Wazuh and Sysmon in a controlled lab environment.
+
+DLL Injection is a process injection technique frequently used by malware authors to execute malicious code inside legitimate processes. This technique is mapped to MITRE ATT&CK T1055.001.
+
+The objective of this lab is to:
+
+* Simulate DLL Injection activity
+* Monitor endpoint activity using Sysmon
+* Collect Windows Event Logs with the Wazuh Agent
+* Detect suspicious process injection behavior in Wazuh
+* Perform alert validation and investigation
+
+## MITRE ATT&CK Mapping
+
+| Technique                      | ID        |
+| ------------------------------ | --------- |
+| Dynamic-Link Library Injection | T1055.001 |
+| Process Injection              | T1055     |
+
+## Lab Environment
+
+### Wazuh Manager
+
+* Operating System: Kali Linux
+* Wazuh Manager Version: 4.x
+
+### Endpoint
+
+* Operating System: Windows 10
+* Sysmon Installed
+* Wazuh Agent Installed
+
+## Attack Simulation
+
+The DLL Injection attack was simulated using InjectProc.
+
+Command executed:
+
+InjectProc.exe dll_inj hello-world-x64.dll cmd.exe
+
+Expected Result:
+
+* DLL injected into cmd.exe
+* Remote thread created
+* DLL executed under target process context
+* "Hello World" message displayed
+
+## Detection Workflow
+
+1. Install Sysmon
+2. Configure Sysmon logging
+3. Configure Wazuh Agent
+4. Execute DLL Injection
+5. Collect Sysmon Events
+6. Generate Wazuh Alerts
+7. Perform Threat Hunting Investigation
+
+## Screenshots
+
+All screenshots for installation, execution, detection, and validation are available in the screenshots directory.
+
+## Key Learning Outcomes
+
+* Endpoint Detection and Response
+* Windows Event Monitoring
+* Sysmon Configuration
+* Wazuh Alert Analysis
+* MITRE ATT&CK Mapping
+* SOC Investigation Workflow
